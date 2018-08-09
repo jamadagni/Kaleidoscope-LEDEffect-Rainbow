@@ -1,4 +1,4 @@
-#include "Kaleidoscope-LEDEffect-Rainbow.h"
+#include "Kaleidoscope-LEDEffect-Rainbow-Plus.h"
 #include "LEDUtils.h"
 
 namespace kaleidoscope {

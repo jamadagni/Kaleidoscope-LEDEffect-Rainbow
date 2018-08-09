@@ -1,9 +1,9 @@
-# Kaleidoscope-LEDEffect-Rainbow
+# Kaleidoscope-LEDEffect-Rainbow-Plus
 
 ![status][st:stable] [![Build Status][travis:image]][travis:status]
 
- [travis:image]: https://travis-ci.org/keyboardio/Kaleidoscope-LEDEffect-Rainbow.svg?branch=master
- [travis:status]: https://travis-ci.org/keyboardio/Kaleidoscope-LEDEffect-Rainbow
+ [travis:image]: https://travis-ci.org/keyboardio/Kaleidoscope-LEDEffect-Rainbow-Plus.svg?branch=master
+ [travis:status]: https://travis-ci.org/keyboardio/Kaleidoscope-LEDEffect-Rainbow-Plus
 
  [st:stable]: https://img.shields.io/badge/stable-✔-black.svg?style=flat&colorA=44cc11&colorB=494e52
  [st:broken]: https://img.shields.io/badge/broken-X-black.svg?style=flat&colorA=e05d44&colorB=494e52
@@ -24,10 +24,13 @@ To use the plugin, include the header, and tell the firmware to use the effects
 which you want:
 
 ```c++
-#include <Kaleidoscope-LEDControl.h>
-#include <Kaleidoscope-LEDEffect-Rainbow.h>
+#include <Kaleidoscope-LEDEffect-Rainbow-Plus.h>
 
-KALEIDOSCOPE_INIT_PLUGINS(LEDRainbowEffect, LEDRainbowWaveEffect);
+KALEIDOSCOPE_INIT_PLUGINS(
+  LEDRainbowEffect,
+  LEDRainbowWaveEffect,
+  LEDRainbowCheckerboardEffect
+);
 
 void setup() {
   Kaleidoscope.setup();

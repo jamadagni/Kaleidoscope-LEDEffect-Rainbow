@@ -9,17 +9,19 @@
  [st:broken]: https://img.shields.io/badge/broken-X-black.svg?style=flat&colorA=e05d44&colorB=494e52
  [st:experimental]: https://img.shields.io/badge/experimental----black.svg?style=flat&colorA=dfb317&colorB=494e52
 
-Two colorful rainbow effects are implemented by this plugin: one where the
-rainbow waves through the keys, and another where the LEDs breathe though the
-colors of a rainbow. The difference is that in the first case, we have all the
-rainbow colors on display, and it waves through the keyboard. In the second
-case, we have only one color at a time, for the whole board, and the color
-cycles through the rainbow's palette.
+Three colorful rainbow effects are implemented by this plugin:
+
+1. the basic effect where we have only one color at a time for the whole board,
+and the color cycles through the rainbow's palette.
+2. the wave effect where the rainbow waves through the keys, showing all rainbow
+colors at the same time,
+3. a somewhat unusual (as in not everyone may be "into it") checkerboard effect
+where all rainbow colors are shown in alternating keys (try it!)
 
 ## Using the extension
 
-To use the plugin, include the header, and tell the firmware to use either (or
-both!) of the effects:
+To use the plugin, include the header, and tell the firmware to use the effects
+which you want:
 
 ```c++
 #include <Kaleidoscope-LEDControl.h>
@@ -43,8 +45,9 @@ void setup() {
 
 ## Plugin properties
 
-The plugin provides two objects: `LEDRainbowEffect`, and `LEDRainbowWaveEffect`,
-both of which provide the following properties:
+The plugin provides three objects: `LEDRainbowEffect`, `LEDRainbowWaveEffect`
+and `LEDRainbowCheckerboardEffect`, all of which provide the following
+properties:
 
 ### `.hue_steps`
 

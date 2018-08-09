@@ -36,10 +36,7 @@ void LEDRainbowWaveEffect::update(void) {
   last_update = now;
 
   for (uint8_t i = 0; i < LED_COUNT; i++) {
-    uint16_t key_hue = hue + 16 * (i / 4);
-    if (key_hue >= 255) {
-      key_hue -= 255;
-    }
+    uint8_t key_hue = hue + 16 * (i / 4);
     cRGB rainbow = breathe ?
                    breath_compute_helper(key_hue, saturation, now) :
                    hsvToRgb(key_hue, saturation, brightness);
@@ -47,7 +44,31 @@ void LEDRainbowWaveEffect::update(void) {
   }
 }
 
+// ---------
+
+void LEDRainbowCheckerboardEffect::update(void) {
+  uint16_t now = millis();
+  if ((now - last_hue_update) < hue_update_interval) {
+    if (!breathe || (now - last_update) < UPDATE_INTERVAL) {  // no updates either due to hue change or breathing
+      return;
+    }
+  } else {
+    hue += hue_steps;
+    last_hue_update = now;
+  }
+  last_update = now;
+
+  for (uint8_t i = 0; i < LED_COUNT; i++) {
+    uint8_t key_hue = hue + 4 * (i / 2) + 128 * (i % 2);
+    cRGB rainbow = breathe ?
+                   breath_compute_helper(key_hue, saturation, now) :
+                   hsvToRgb(key_hue, saturation, brightness);
+    ::LEDControl.setCrgbAt(i, rainbow);
+  }
 }
+
+} // namespace kaleidoscope
 
 kaleidoscope::LEDRainbowEffect LEDRainbowEffect;
 kaleidoscope::LEDRainbowWaveEffect LEDRainbowWaveEffect;
+kaleidoscope::LEDRainbowCheckerboardEffect LEDRainbowCheckerboardEffect;
